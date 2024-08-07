@@ -1,14 +1,13 @@
 # Use the official Debian base image
-FROM debian:latest
-
-# Set environment variables
-ENV DEBIAN_FRONTEND=noninteractive
+FROM randomdude/gcc-cross-x86_64-elf
 
 # Update package lists, install updates, git, and qemu
-RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get install -y git qemu-utils qemu-system-x86 nano nasm && \
-    apt-get clean
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get install -y git qemu-utils 
+RUN apt install -y qemu-system-x86 nano nasm xorriso
+RUN	apt install -y grub-pc-bin grub-common
+RUN apt-get clean
 
 # Clone the git repository into the home directory
 # Replace <repository_url> with the actual URL of the Git repository you want to clone
