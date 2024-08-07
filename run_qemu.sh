@@ -1,0 +1,1 @@
+qemu-system-x86_64 -nographic -monitor tcp:127.0.0.1:4444,server,nowait -cdrom dist/x86_64/kernel.iso
