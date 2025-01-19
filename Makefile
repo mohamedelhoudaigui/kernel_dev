@@ -6,3 +6,6 @@ down:
 
 build:
 	docker compose build --no-cache
+
+it:
+	docker compose exec main bash
