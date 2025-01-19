@@ -1,0 +1,8 @@
+services:
+  main:
+    container_name: os_dev
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - ./src/:/app
