@@ -1,4 +1,4 @@
-#include "kernel.h"
+#include "../include/kernel.h"
 
 sbiret sbi_call(long arg0, long arg1, long arg2, long arg3, long arg4,
                        long arg5, long fid, long eid) {
@@ -29,9 +29,10 @@ void kernel_main(void) {
     //init bss to zero (some bootloaders do that)
     memset(__bss, 0, (size_t) __bss_end - (size_t) __bss);
  
-    const char *s = "\nhello world\n";
-    putmem(s, memlen(s, 0));
-    for (;;) {
+    printf("\n\nHello %s\n", "World!");
+    printf("1 + 2 = %d, %x\n", 1 + 2, 0x1234abcd);
+    for (;;)
+    {
          __asm__ __volatile__("wfi");
     }
 }
