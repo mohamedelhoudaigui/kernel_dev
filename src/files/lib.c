@@ -1,11 +1,32 @@
 #include "../include/kernel.h"
 
-void *memset(void *buf, byte_t b, size_t n)
+void *memset(void *buf, byte_t b, size_t len)
 {
-    byte_t *p = (byte_t *) buf;
-    while (n--)
-        *p++ = b;
+    byte_t *tmp = (byte_t *) buf;
+    while (len--)
+        *tmp++ = b;
     return buf;
+}
+
+void *memcpy(void *dst, void *src, size_t len)
+{
+    byte_t* tmp1 = (byte_t *)dst;
+    byte_t* tmp2 = (byte_t *)src;
+    while (len--)
+        tmp1[len] = tmp2[len];
+    return dst;
+}
+
+int memcmp(void* m1, void* m2, size_t len)
+{
+    byte_t* s1 = (byte_t *)m1;
+    byte_t* s2 = (byte_t *)m2;
+    while (*s1 == *s2 && len > 0){--len; ++s1; ++s2;}
+    if (*s1 > *s2)
+        return (1);
+    else if (*s1 < *s2)
+        return (-1);
+    return (0);
 }
 
 void putbyte(byte_t ch)

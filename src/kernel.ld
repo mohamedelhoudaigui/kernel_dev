@@ -25,5 +25,10 @@ SECTIONS {
     . = ALIGN(4);
     . += 128 * 1024; /* 128KB reserved for stack */
     __stack_top = .; /* start stack at the lowest address */
+
+    . = ALIGN(4096);
+    __free_ram = .;
+    . += 128 * 1024 * 1024; /* 64 mb */
+    __free_ram_end = .;
 }
 
